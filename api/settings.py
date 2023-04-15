@@ -201,8 +201,10 @@ SHARED_KEY = os.getenv('SHARED_KEY')
 ALLOWED_REQUEST_URL = ["http://localhost:8001/"]
 
 QUOTA_GLOBAL_MAX_REQUEST_COUNT = int(os.getenv("QUOTA_GLOBAL_MAX_REQUEST_COUNT", 500))
-QUOTA_EXCLUDED_STATUS_CODE = [int(element) for element in os.getenv("QUOTA_EXCLUDED_STATUS_CODE", "").split(" ")]
-QUOTA_INCLUDED_STATUS_CODE = [int(element) for element in os.getenv("QUOTA_INCLUDED_STATUS_CODE", "").split(" ")]
+QUOTA_EXCLUDED_STATUS_CODE = [int(element) for element in os.getenv("QUOTA_EXCLUDED_STATUS_CODE", "").split(" ") if
+                              element]
+QUOTA_INCLUDED_STATUS_CODE = [int(element) for element in os.getenv("QUOTA_INCLUDED_STATUS_CODE", "").split(" ") if
+                              element]
 QUOTA_EXCLUDED_INCOMPLETE_REQUEST = os.getenv("QUOTA_EXCLUDED_INCOMPLETE_REQUEST", "1") == "1"
 QUOTA_MODE = os.getenv("QUOTA_MODE")
 QUOTA_MODE = QUOTA_MODE if QUOTA_MODE in [QuotaMode.count_per_user,
